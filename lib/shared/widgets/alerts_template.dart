@@ -45,10 +45,10 @@ class AlertLoading extends StatelessWidget {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            SvgPicture.asset(
-              AppTheme.logoLoading,
-              fit: BoxFit.fill,
-            ),
+            // SvgPicture.asset(
+            //   // AppTheme.logoLoading,
+            //   fit: BoxFit.fill,
+            // ),
           ],
         ),
       ),
@@ -129,7 +129,7 @@ class AlertTemplate extends StatefulWidget {
   final bool? dismissAlert;
   final bool? animation;
   final double? padding;
-  final bool? center ;
+  final bool? center;
 
   const AlertTemplate(
       {Key? key,
@@ -344,7 +344,8 @@ class SuccessInformation extends StatelessWidget {
         SvgPicture.asset(AppTheme.iconCheckPath),
         const SizedBox(height: 25),
         isTitle == true
-            ? titleAlerts(title: '¡Estamos listos!', color: AppTheme.primaryColor)
+            ? titleAlerts(
+                title: '¡Estamos listos!', color: AppTheme.primaryColor)
             : const SizedBox(),
         isTitle == true
             ? SizedBox(height: size.height * 0.015)
@@ -459,5 +460,3 @@ class NoExistInformation extends StatelessWidget {
     );
   }
 }
-
-
