@@ -120,6 +120,17 @@ class _LayoutPageState extends State<LayoutPage> {
               ),
             ],
           ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              width: double.infinity,
+              height: 200,
+              decoration: BoxDecoration(color: AppTheme.secondaryColor),
+              child: Container(),
+            ),
+          )
           // if (widget.requiredStack) const AlertModal()
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:e_commerce/env/theme/app_theme.dart';
 import 'package:e_commerce/shared/provider/functional_provider.dart';
 import 'package:e_commerce/shared/routes/app_routes.dart';
 import 'package:e_commerce/shared/widgets/layout.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'Artesanal Shop',
         // home: LayoutPage(
         //   requiredStack: false,
+        theme: AppTheme().theme(),
         // )),
         initialRoute: AppRoutes.intialRoute,
         routes: AppRoutes.routes,

@@ -19,4 +19,17 @@ class AppTheme {
   static const String iconErrorPath = "assets/error.svg";
   static const String iconCheckPath = "assets/check.svg";
   static const String iconCautionPath = "assets/caution.svg";
+
+  ThemeData theme() {
+    return ThemeData(
+      textSelectionTheme: TextSelectionThemeData(
+        selectionHandleColor: AppTheme.primaryColor,
+        cursorColor: AppTheme.primaryColor,
+      ),
+      primaryColor: AppTheme.primaryColor,
+      filledButtonTheme: FilledButtonThemeData(
+          style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(error))),
+      useMaterial3: true,
+    );
+  }
 }
