@@ -6,6 +6,8 @@ class AppRoutes {
 
   static Map<String, Widget Function(BuildContext)> routes = {
     '/home': (_) => const HomePage(),
+    '/cart' : (_) => const CartPage(),
+    
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {

@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:e_commerce/env/theme/app_theme.dart';
+import 'package:e_commerce/modules/routes.dart';
 import 'package:e_commerce/shared/provider/functional_provider.dart';
 import 'package:e_commerce/shared/widgets/alert_modal.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,9 @@ class _LayoutPageState extends State<LayoutPage> {
                     position: badges.BadgePosition.topEnd(top: -2, end: 2),
                     badgeContent: Text('1'),
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/cart');
+                        },
                         icon: Icon(
                           Icons.shopping_bag_rounded,
                           size: 30,
