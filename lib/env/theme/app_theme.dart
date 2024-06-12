@@ -27,8 +27,8 @@ class AppTheme {
         cursorColor: AppTheme.primaryColor,
       ),
       primaryColor: AppTheme.primaryColor,
-      filledButtonTheme: FilledButtonThemeData(
-          style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(error))),
+      filledButtonTheme: const FilledButtonThemeData(
+          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(error))),
       useMaterial3: true,
     );
   }
