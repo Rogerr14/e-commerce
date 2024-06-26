@@ -61,6 +61,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     widget.textCapitalization =
         widget.textCapitalization ??= TextCapitalization.none;
     return TextField(
+      
       onEditingComplete: widget.onEditingComplete,
       onTap: widget.ontap,
       enabled: widget.enabled,
@@ -74,7 +75,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       inputFormatters: widget.inputFormatter,
       style: TextStyle(
         height: widget.multiline! ? 1.8 : 1,
-        color: widget.fontColor ?? AppTheme.secondaryColor,
+        color: widget.fontColor ?? AppTheme.primaryColor,
       ),
       cursorColor: widget.focusColor ?? AppTheme.primaryColor,
       decoration: InputDecoration(
@@ -101,6 +102,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     : Colors.red),
           ),
           hintText: widget.hinText,
+          hintStyle: TextStyle(color: widget.fontColor ?? AppTheme.primaryColor),
           errorText: widget.errorText,
           suffixIcon: widget.suffixIcon,
           prefixText: widget.prefixText),

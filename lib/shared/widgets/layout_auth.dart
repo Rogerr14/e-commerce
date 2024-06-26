@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 class LayoutAuth extends StatefulWidget {
   final Widget child;
-  const LayoutAuth({super.key, required this.child});
+  final String textoCuenta;
+  final String linkCuenta;
+  void Function()? onPressLink;
+ LayoutAuth({super.key, required this.child, required this.textoCuenta, required this.linkCuenta});
 
   @override
   State<LayoutAuth> createState() => _LayoutAuthState();
@@ -35,6 +38,15 @@ class _LayoutAuthState extends State<LayoutAuth> {
                 ),
               ),
               widget.child,
+              SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: OutlinedButton(
+                  onPressed: () {},
+                  child: Text('Iniciar Sesion'),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -42,7 +54,7 @@ class _LayoutAuthState extends State<LayoutAuth> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      'Texto ',
+                      widget.textoCuenta,
                       style: TextStyle(
                         color: AppTheme.primaryColor,
                         fontWeight: FontWeight.w700,
@@ -50,15 +62,16 @@ class _LayoutAuthState extends State<LayoutAuth> {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Correo Electrónico',
-                          style: TextStyle(
-                            color: AppTheme.primaryColor,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
-                          ),
-                        )),
+                      onPressed: () {},
+                      child: Text(
+                        widget.linkCuenta,
+                        style: TextStyle(
+                          color: AppTheme.primaryColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

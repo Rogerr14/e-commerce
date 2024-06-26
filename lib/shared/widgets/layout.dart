@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:e_commerce/env/theme/app_theme.dart';
 import 'package:e_commerce/modules/routes.dart';
+import 'package:e_commerce/shared/helpers/global_heper.dart';
 import 'package:e_commerce/shared/provider/functional_provider.dart';
 import 'package:e_commerce/shared/widgets/alert_modal.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class _LayoutPageState extends State<LayoutPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // final fp = Provider.of<FunctionalProvider>(context, listen: false);
+    final fp = Provider.of<FunctionalProvider>(context, listen: false);
 
     return Scaffold(
       backgroundColor: AppTheme.primaryColor,
@@ -72,7 +73,9 @@ class _LayoutPageState extends State<LayoutPage> {
                     badgeContent: Text('1'),
                     child: IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/cart');
+                          // Navigator.pushNamed(context, '/login');
+                          final keyCart = GlobalHelper.genKey();
+                          fp.addPage(key: keyCart, content: LoginPage());
                         },
                         icon: Icon(
                           Icons.shopping_bag_rounded,
@@ -81,7 +84,10 @@ class _LayoutPageState extends State<LayoutPage> {
                         )),
                   ),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+
+                      },
                       icon: Icon(
                         Icons.person,
                         size: 30,
@@ -133,8 +139,8 @@ class _LayoutPageState extends State<LayoutPage> {
               decoration: BoxDecoration(color: AppTheme.secondaryColor),
               child: Container(),
             ),
-          )
-          // if (widget.requiredStack) const AlertModal()
+          ),
+          const AlertModal()
         ],
       ),
     );
