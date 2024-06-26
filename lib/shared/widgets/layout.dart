@@ -1,10 +1,13 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:appbar_dropdown/appbar_dropdown.dart';
 import 'package:e_commerce/env/theme/app_theme.dart';
 import 'package:e_commerce/modules/routes.dart';
 import 'package:e_commerce/shared/helpers/global_heper.dart';
 import 'package:e_commerce/shared/provider/functional_provider.dart';
 import 'package:e_commerce/shared/widgets/alert_modal.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:provider/provider.dart';
@@ -25,17 +28,20 @@ class LayoutPage extends StatefulWidget {
 
 class _LayoutPageState extends State<LayoutPage> {
   ScrollController _scrollController = ScrollController();
+  // late ExpandedTileController _controller;
 
   @override
   void initState() {
     // TODO: implement initState
     _scrollController = ScrollController();
+    // _controller = ExpandedTileController(isExpanded: true);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    String _value = '';
     final fp = Provider.of<FunctionalProvider>(context, listen: false);
 
     return Scaffold(
@@ -55,7 +61,11 @@ class _LayoutPageState extends State<LayoutPage> {
 
                 leading: GestureDetector(
                   onTap: () {
-                    debugPrint('si funca');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -67,6 +77,22 @@ class _LayoutPageState extends State<LayoutPage> {
                 ),
                 leadingWidth: 200,
                 actions: [
+                  DropdownButtonHideUnderline(
+
+                      child: DropdownButton(
+                        borderRadius: BorderRadius.circular(20),
+                        // hint: Text('categoria'),
+                        
+                        items: [
+                        DropdownMenuItem(
+                          child: Text('Bebidas'),
+                        ),
+                    ],
+                    onChanged: (value) {
+                      _value = value;
+
+                    },
+                  )),
                   badges.Badge(
                     badgeStyle: badges.BadgeStyle(badgeColor: AppTheme.orange),
                     position: badges.BadgePosition.topEnd(top: -2, end: 2),
@@ -84,10 +110,7 @@ class _LayoutPageState extends State<LayoutPage> {
                         )),
                   ),
                   IconButton(
-                      onPressed: () {
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
-
-                      },
+                      onPressed: () {},
                       icon: Icon(
                         Icons.person,
                         size: 30,
