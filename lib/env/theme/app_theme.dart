@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static const Color primaryColor = Color(0xFFfefae0);
-  // static const Color secondaryColor = Color(0xFFC2D6C5);
-  static const Color secondaryColor = Color(0xFFccd5ae);
+  // static const Color primaryColor = Color(0xFFFFFFFF);
+  static const Color secondaryColor = Color(0xFFC2D6C5);
+  // static const Color secondaryColor = Color(0xFFccd5ae);
+  // static const Color secondaryColor = Color.fromARGB(238, 197, 246, 208);
   static const Color orange = Color.fromARGB(255, 236, 182, 94);
 
   static const Color transparent = Color(0x00000000);
