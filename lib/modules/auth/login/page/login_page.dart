@@ -1,4 +1,5 @@
 import 'package:e_commerce/env/theme/app_theme.dart';
+import 'package:e_commerce/modules/auth/login/service/login_service.dart';
 import 'package:e_commerce/shared/widgets/layout_auth.dart';
 import 'package:e_commerce/shared/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController userController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   bool isObscure = false;
-  
-  
+  LoguinService loguinService = LoguinService();
+
   @override
   Widget build(BuildContext context) {
-    
     return LayoutAuth(
+      modeAuth: 'Iniciar Sesion',
       linkCuenta: 'Registrate',
       textoCuenta: '¿Aun no tienes cuenta?',
+      onPress: () {
+        final body = {
+          'nombreUsuario': userController.text,
+          'contraseña': passwordController.text
+        };
+        loguinService.login(context, body);
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -45,8 +55,11 @@ class _LoginPageState extends State<LoginPage> {
               child: TextFieldWidget(
                 onChanged: (value) {},
                 hinText: 'Correo',
+                // enabled: true,
+
                 fontColor: Colors.black,
-                isValid: true,
+                // isValid: true,
+                controller: userController,
 
                 // focusColor: Colors.black,
               )),
@@ -65,29 +78,26 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: TextFieldWidget(
-                obscureText: isObscure,
-                suffixIcon: IconButton(
-                    onPressed: () {
-                      isObscure = !isObscure;
-                      setState(() {
-                        
-                      });
-                    },
-                    icon: Icon((!isObscure)
-                        ? Icons.visibility_off_outlined
-                        : Icons.remove_red_eye_outlined)),
-                onChanged: (value) {},
-                hinText: 'Contraseña',
-                fontColor: Colors.black,
-                isValid: true,
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: TextFieldWidget(
+              controller: passwordController,
+              obscureText: isObscure,
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    isObscure = !isObscure;
+                    setState(() {});
+                  },
+                  icon: Icon((!isObscure)
+                      ? Icons.visibility_off_outlined
+                      : Icons.remove_red_eye_outlined)),
+              onChanged: (value) {},
+              hinText: 'Contraseña',
+              fontColor: Colors.black,
+              isValid: true,
 
-                // focusColor: Colors.black,
-              ),
+              // focusColor: Colors.black,
             ),
-
-
+          ),
         ],
       ),
     );

@@ -5,5 +5,5 @@ class DevEnv extends BaseConfig {
   String get appName => 'Eagle App';
 
   @override
-  String get serviceUrl => 'http://10.10.80.249:8910/';
+  String get serviceUrl => 'http://localhost:5093';
 }

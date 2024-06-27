@@ -40,7 +40,7 @@ class _LayoutPageState extends State<LayoutPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    String _value = '';
+    String _value = 'hola';
     // final fp = Provider.of<FunctionalProvider>(context, listen: false);
 
     return Scaffold(
@@ -76,22 +76,30 @@ class _LayoutPageState extends State<LayoutPage> {
                 ),
                 leadingWidth: 200,
                 actions: [
-                  DropdownButtonHideUnderline(
-
-                      child: DropdownButton(
-                        borderRadius: BorderRadius.circular(20),
-                        // hint: Text('categoria'),
-                        
-                        items: [
-                        DropdownMenuItem(
-                          child: Text('Bebidas'),
-                        ),
-                    ],
-                    onChanged: (value) {
-                      _value = value;
-
-                    },
-                  )),
+                  SizedBox(
+                    width: 300,
+                    height: 30,
+                    child: DropdownButtonHideUnderline(
+                    
+                        child: DropdownButton(
+                          hint: Text('valor'),
+                          isExpanded: true,
+                    
+                          
+                          borderRadius: BorderRadius.circular(20),
+                          // hint: Text('categoria'),
+                          
+                          items: [
+                          DropdownMenuItem(
+                            child: Text('Bebidas'),
+                          ),
+                      ],
+                      onChanged: (value) {
+                        _value = value;
+                    
+                      },
+                    )),
+                  ),
                   badges.Badge(
                     badgeStyle: badges.BadgeStyle(badgeColor: AppTheme.orange),
                     position: badges.BadgePosition.topEnd(top: -2, end: 2),

@@ -1,12 +1,19 @@
 import 'package:e_commerce/env/theme/app_theme.dart';
+import 'package:e_commerce/modules/auth/login/service/login_service.dart';
 import 'package:flutter/material.dart';
 
 class LayoutAuth extends StatefulWidget {
   final Widget child;
   final String textoCuenta;
   final String linkCuenta;
-  void Function()? onPressLink;
- LayoutAuth({super.key, required this.child, required this.textoCuenta, required this.linkCuenta});
+  final String modeAuth;
+  final void Function()? onPressLink;
+   final void Function()? onPress;
+  const LayoutAuth(
+      {super.key,
+      required this.child,
+      required this.textoCuenta,
+      required this.linkCuenta, required this.modeAuth, this.onPressLink, this.onPress});
 
   @override
   State<LayoutAuth> createState() => _LayoutAuthState();
@@ -43,8 +50,8 @@ class _LayoutAuthState extends State<LayoutAuth> {
               ),
               Center(
                 child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text('Iniciar Sesion'),
+                  onPressed: widget.onPress,
+                  child: Text(widget.modeAuth),
                 ),
               ),
               Padding(
